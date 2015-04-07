@@ -1,0 +1,54 @@
+Program Name: TAG (transcript assembly by mapping reads to graphs)
+Version: 0.91
+Released on Jan 22, 2015
+Developer: Yuzhen Ye <yye@indiana.edu> and Haixu Tang <hatang@indiana.edu>
+Affiliation: School of Informatics and Computing, Indiana University, Bloomington
+
+The development of TAG was supported by NIH grant: NIH 1R01AI108888-01A1
+
+TAG is free software under the terms of the GNU General Public License as published by 
+the Free Software Foundation.
+
+>> Introduction
+
+TAG is a tool for metatranscriptome assemby by mapping metatranscriptomic reads onto graphs of matched metagenome assembly. 
+
+TAG on the web: http://omics.informatics.indiana.edu/mg/TAG
+  (Please check the project home page for updates and newer version of the program)
+
+>> Installation
+
+go to Src/ (the source file folder), then call:
+make clean
+make
+
+The executable file "tag" will be created under the same folder
+
+>> Dependents
+TAG itself does not rely on any third party software; but it takes outputs from other software as its inputs.
+1) SOAPdenovo2 (or SOAPdenovo); it is required for assembling matched metagenome, generating both *.contig and *.edge files.
+   SOAPdenovo2 is available at http://sourceforge.net/projects/soapdenovo2/.
+2) Bowtie2; it is required for aligning metatranscriptomic datasets onto metagenome assembly (the contig file), providing the sam file
+   Bowtie2 is availalbe at http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+
+>> Using tag 
+
+Usage: type tag for usages
+Inputs:
+    metatranscriptomic sequences (strand-specific reads, in fasta format or fastq format)
+    assembly of matched metagenome (*.contig and *.edge files)
+    alignment of the metatranscriptomic reads onto the linear contigs in SAM format 
+
+Example usage: ./tag -i T.1.fa -j T.2.fa -e G.edge -s G.contig -m S.sam -k 31 -o test-tag
+
+Inputs:
+    T.1.fa & T.2.fa  -- metatranscriptomic datasets
+    G.edge & G.contig -- the assembly of matched metagenome (the graph file & the sequence file of the contig), produced by SOAPdenovo2
+    31 -- the k-mer size (NOTE: the k-mer must be same as the one used in the SOAPdenovo2 assembly!!)
+    S.sam -- the alignment of T.1.fq & T.2.fq against G.contig, derived by Bowtie 2
+Outputs:
+    test-tag.fa -- assembled transcripts
+    test-tag.vertex & test-tag.edge -- other outputs regarding the transcript graph (for more advanced uses, use -y option)
+
+>> Test datasets
+Datasets for testing the software are availalble for download at the TAG website
