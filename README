@@ -13,7 +13,7 @@ the Free Software Foundation.
 
 TAG is a tool for metatranscriptome assemby by mapping metatranscriptomic reads onto graphs of matched metagenome assembly. 
 
-TAG on the web: http://omics.informatics.indiana.edu/mg/TAG
+TAG on the web: http://omics.informatics.indiana.edu/TAG
   (Please check the project home page for updates and newer version of the program)
 
 >> Installation
@@ -51,4 +51,4 @@ Outputs:
     test-tag.vertex & test-tag.edge -- other outputs regarding the transcript graph (for more advanced uses, use -y option)
 
 >> Test datasets
-Datasets for testing the software are availalble for download at the TAG website
+Check out datasets for testing the software at the TAG website
